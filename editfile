@@ -1,0 +1,53 @@
+#############SHELL Script for editing a file############
+
+The sed command in Unix/Linux is a powerful stream editor used to perform basic text transformations on an input stream (a file or input from a pipeline).
+
+Here's how you can use sed to update the contents of a text file.
+
+sh "sed 's/old_text/new_text/g' input_file > output_file"
+
+s -> stands for substitute.
+old_text ->  is the text you want to replace.
+new_text ->  is the text you want to replace it with.
+g -> is a global flag, meaning all occurrences in the line will be replaced.
+
+Example
+Let's say you have a file called example.txt with the following content:
+
+Hello, world!
+Hello, universe!
+
+And you want to replace Hello with Hi. You can use the following sed command:
+
+
+sh "sed 's/Hello/Hi/g' example.txt > updated_example.txt"
+
+After running this command, updated_example.txt will contain:
+
+Hi, world!
+Hi, universe!
+
+
+In-Place Editing
+If you want to edit the file in place without creating a new file, you can use the -i flag:
+
+sh "sed -i 's/Hello/Hi/g' example.txt"
+After running this command, example.txt will be updated directly:
+
+Hi, world!
+Hi, universe!
+
+
+Using a Backup Extension
+To keep a backup of the original file, you can provide an extension with the -i flag:
+
+sh "sed -i.bak 's/Hello/Hi/g' example.txt"
+This command will create a backup of example.txt called example.txt.bak before making the changes.
+
+
+Combining Multiple sed Commands
+To apply multiple sed commands in a single command, use the -e option:
+
+
+sh "sed -e 's/Hello/Hi/g' -e 's/world/planet/g' example.txt"
+This will replace Hello with Hi and world with planet in the same pass.
